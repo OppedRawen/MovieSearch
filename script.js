@@ -9,7 +9,7 @@ form.addEventListener("submit",function(event){
     
     if(userInput){
             
-            console.log(select.value);
+        
         
         getApi(userInput);
     }else{
@@ -17,9 +17,15 @@ form.addEventListener("submit",function(event){
     }
 })
 function getApi(userInput){
-    
-    
     var requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&tomatoes=true&apikey=e1279f79&`;
+    if(select.value==1){
+        requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&tomatoes=true&apikey=e1279f79&`;
+    }else if(select.value==2){
+        requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=series&tomatoes=true&apikey=e1279f79&`;
+    }else if(select.value==3){
+        requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=episodes&tomatoes=true&apikey=e1279f79&`;
+    }
+    
 
     
     fetch(requestUrl)
@@ -41,6 +47,8 @@ function getApi(userInput){
                     actor.textContent = data.Actors;
                     rated.textContent = data.Rated
                 }})
+            }else{
+                alert("Invalid response");
             }
         })
 
