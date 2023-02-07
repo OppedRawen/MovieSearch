@@ -1,5 +1,23 @@
-var input = $("search-input");
+var searchMovie = document.querySelector('#search-form');
 
-function getApi(){
-    var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=b3bc862dbbd015f43fc00d688d65a36c";
-}
+searchMovie.addEventListener('submit', function(event){
+    event.preventDefault();
+    var movieTitle = document.querySelector('#search-input').value;
+    console.log(movieTitle)
+
+    getApi(movieTitle);
+
+})
+
+function getApi(movieTitle) {
+    var requestUrl = "https://www.omdbapi.com/?t=" + movieTitle + "&apikey=fde21b99";
+    console.log(requestUrl)
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)       
+      });
+  }
+
