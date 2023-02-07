@@ -1,20 +1,27 @@
 var input = document.querySelector("#search-input");
 var submit = document.querySelector("#submit");
 var form = document.querySelector("#search-form");
+var select = document.querySelector("#form-select");
 
 form.addEventListener("submit",function(event){
     event.preventDefault();
     var userInput = input.value.trim();
+    
     if(userInput){
+            
+            console.log(select.value);
+        
         getApi(userInput);
     }else{
         alert("Please enter something");
     }
 })
 function getApi(userInput){
+    
+    
     var requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&tomatoes=true&apikey=e1279f79&`;
-    var posterUrl = `http://img.omdbapi.com/?t='${userInput}'&type=movie&tomatoes=true&apikey=e1279f79&`;
 
+    
     fetch(requestUrl)
         .then(function(response){
             if(response.ok){
