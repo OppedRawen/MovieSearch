@@ -49,23 +49,23 @@ function getApi(userInput){
                 response.json().then(function(data){{
                     console.log(data);
                     var imdb = data.imdbID;
-                    var movieTitle = data.Title
+                    var movieTitle = data.Title;
                     var imdbAddress = "https://www.imdb.com/title/"+imdb+"/";
-                    var code = `<div class="card" style="width: 18rem;">
+                    var code = `<div class="card w-25" style="width: 25rem;">
                     <h1 class="card-title" id = "title">${data.Title}</h5>
                     <img  id = "poster" src="${data.Poster}" class="card-img-top" alt="movie poster">
-                    <div class="card-body">
+                    
+                  </div>
+                  <div class="card-body w-25">
                       
-                      <p  id = "plot" class="card-text">${data.Plot}</p>
+                      <p  id = "plot" class="card-text fs-2">${data.Plot}</p>
                       <p1 id ="actor">Actors: ${data.Actors}</p1>
                       <p1 id = "rated">Rated: ${data.Rated}</p1>
                       <p1 id = "awards">Awards: ${data.Awards}</p1>
-                      <a href="${imdbAddress}" class="btn btn-primary p-3">Go to imdb website</a>
-                    </div>
-                  </div>`;
-                  cardContainer.innerHTML+=code;
-                  getNews(movieTitle)
-
+                      <a href="${imdbAddress}" class="btn btn-primary fs-2 ">Go to imdb website</a>
+                    </div>`;
+                  cardContainer.innerHTML=code;
+                  getNews(movieTitle);
         
                 }})
             }else{
@@ -75,8 +75,6 @@ function getApi(userInput){
 
     
 }
-
-// //<<<<<<< feature/dropdownSelection
 
 function getNews(movieTitle) {
     var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
