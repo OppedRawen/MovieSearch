@@ -2,6 +2,7 @@ var input = document.querySelector("#search-input");
 var submit = document.querySelector("#submit");
 var form = document.querySelector("#search-form");
 var select = document.querySelector("#form-select");
+var select2 = document.querySelector("#form-select2");
 
 form.addEventListener("submit",function(event){
     event.preventDefault();
@@ -17,13 +18,25 @@ form.addEventListener("submit",function(event){
     }
 })
 function getApi(userInput){
-    var requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&tomatoes=true&apikey=e1279f79&`;
+    var requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
     if(select.value==1){
-        requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&tomatoes=true&apikey=e1279f79&`;
+        if(select2.value==1){
+            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
+        }else if(select2.value==2){
+            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&plot=full&tomatoes=true&apikey=e1279f79&`;
+        }
     }else if(select.value==2){
-        requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=series&tomatoes=true&apikey=e1279f79&`;
+        if(select2.value==1){
+            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=series&plot=short&tomatoes=true&apikey=e1279f79&`;
+        }else if(select2.value==2){
+            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=series&plot=full&tomatoes=true&apikey=e1279f79&`;
+        }
     }else if(select.value==3){
-        requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=episodes&tomatoes=true&apikey=e1279f79&`;
+        if(select2.value==1){
+            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=episodes&plot=short&tomatoes=true&apikey=e1279f79&`;
+        }else if(select2.value==2){
+            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=episodes&plot=full&tomatoes=true&apikey=e1279f79&`;
+        }
     }
     
 
@@ -34,6 +47,7 @@ function getApi(userInput){
                 console.log(response);
                 response.json().then(function(data){{
                     console.log(data);
+                    //implement features on url undefined later
                     var title = document.querySelector("#title");
                     title.textContent = input.value;
                     var awards = document.querySelector("#awards");
@@ -54,3 +68,5 @@ function getApi(userInput){
 
     
 }
+
+
