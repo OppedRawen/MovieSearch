@@ -73,23 +73,23 @@ function getApi(userInput){
     
 }
 
-//<<<<<<< feature/dropdownSelection
+// //<<<<<<< feature/dropdownSelection
 
-=======
-//This searches for a youtube video based on the movie title given in the previous function
-//added full original sountrack to search to look specifically for that movies soundtrack.
-//function getYoutubeVideo(movieTitle) {
-    //var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + movieTitle + "full original soundtrack&type=video&key=AIzaSyCJTHFOR8cX7fWfJ_0L1mLrsfgvneAZnsk";
-   // console.log(requestUrl)
-   // fetch(requestUrl)
-     // .then(function (response) {
-     //   return response.json();
-     // })
-    //  .then(function (data) {
-    //    console.log(data.items[1].id.videoId)
-   //     var videoID = data.items[1].id.videoId
-  //      var youtubeVideo = "https://www.youtube.com/watch?v=" + videoID
-  //      console.log(youtubeVideo)       
-  //    })
-//  }
-//>>>>>>> main
+// =======
+// //This searches for a youtube video based on the movie title given in the previous function
+// //added full original sountrack to search to look specifically for that movies soundtrack.
+// //function getYoutubeVideo(movieTitle) {
+//     //var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + movieTitle + "full original soundtrack&type=video&key=AIzaSyCJTHFOR8cX7fWfJ_0L1mLrsfgvneAZnsk";
+//    // console.log(requestUrl)
+//    // fetch(requestUrl)
+//      // .then(function (response) {
+//      //   return response.json();
+//      // })
+//     //  .then(function (data) {
+//     //    console.log(data.items[1].id.videoId)
+//    //     var videoID = data.items[1].id.videoId
+//   //      var youtubeVideo = "https://www.youtube.com/watch?v=" + videoID
+//   //      console.log(youtubeVideo)       
+//   //    })
+// //  }
+// //>>>>>>> main

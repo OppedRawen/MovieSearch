@@ -11,17 +11,63 @@
 </head>
 <body>
     <header>
-        <h1>
+        <!-- <h1>
            Movie searcher
-        </h1>
-    
+        </h1> -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand w-10 p-3 fs-1" href="#">Movie Searcher</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul> -->
+            <select id="form-select" class="nav-item" aria-label="Default select example">
+            <option selected>Type</option>
+
+            <option value="1">Movies</option>
+            <option value="2">Series</option>
+            <option value="3">Episode</option>
+          </select>
+          <select id="form-select2" class="nav-item" aria-label="Default select example">
+            <option selected>Plot length</option>
+
+            <option value="1">Short</option>
+            <option value="2">Long</option>
+          </select>
+                <form id = "search-form" class="d-flex">
+                  <input id = "search-input" class="form-control me-2" type="search" placeholder="Search a movie" aria-label="Search">
+                  <button  id = "submit" class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
     </header>
     <section class = "container">
-        <form id = "search-form">
+        <!-- <form id = "search-form">
             <input id = "search-input" type = "text" placeholder="Search!">
             <button id = "submit">Submit</button>
-        </form>
-        <select id="form-select" aria-label="Default select example">
+        </form> -->
+        <!-- <select id="form-select" aria-label="Default select example">
             <option selected>Type</option>
 
             <option value="1">Movies</option>
@@ -33,17 +79,29 @@
 
             <option value="1">Short</option>
             <option value="2">Long</option>
-          </select>
+          </select> -->
           
     </section>
-    <section class = "display">
+    <!-- <section class = "display">
         <h1 id = "title"></h1>
         <img id = "poster" src = ""/>
         <p1 id = "plot"></p1>
         <p1 id ="actor"></p1>
         <p1 id = "rated"></p1>
         <p1 id = "awards"></p1>
-    </section>
+    </section> -->
+    <div class="card" style="width: 18rem;">
+        <h5 class="card-title" id = "title">Movie title</h5>
+        <img  id = "poster" src="" class="card-img-top" alt="movie poster">
+        <div class="card-body">
+          
+          <p  id = "plot" class="card-text"></p>
+          <p1 id ="actor"></p1>
+          <p1 id = "rated"></p1>
+          <p1 id = "awards"></p1>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
