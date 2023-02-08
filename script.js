@@ -3,9 +3,10 @@ var submit = document.querySelector("#submit");
 var form = document.querySelector("#search-form");
 var select = document.querySelector("#form-select");
 var select2 = document.querySelector("#form-select2");
-
+var cardContainer = document.querySelector("#cardContainer");
 form.addEventListener("submit",function(event){
     event.preventDefault();
+   
     var userInput = input.value.trim();
     
     if(userInput){
@@ -47,22 +48,36 @@ function getApi(userInput){
                 console.log(response);
                 response.json().then(function(data){{
                     console.log(data);
-                    //implement features on url undefined later
-                    var title = document.querySelector("#title");
-                    title.textContent = input.value;
-                    var awards = document.querySelector("#awards");
-                    awards.textContent= data.Awards;
-                    var movieTitle = data.Title
-                  console.log(movieTitle)
-                    var plot = document.querySelector("#plot");
-                    var actor = document.querySelector('#actor');
-                    var rated = document.querySelector("#rated");
-                    var poster = document.querySelector("#poster");
-                    poster.setAttribute("src",data.Poster);
-                    plot.textContent = data.Plot;
-                    actor.textContent = data.Actors;
-                    rated.textContent = data.Rated
-                    getYoutubeVideo(movieTitle);
+                    var code = `<div class="card" style="width: 18rem;">
+                    <h5 class="card-title" id = "title">${input.value}</h5>
+                    <img  id = "poster" src="${data.Poster}" class="card-img-top" alt="movie poster">
+                    <div class="card-body">
+                      
+                      <p  id = "plot" class="card-text">${data.Plot}</p>
+                      <p1 id ="actor">${data.Actors}</p1>
+                      <p1 id = "rated">${data.Rated}</p1>
+                      <p1 id = "awards">${data.Awards}</p1>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>`;
+                  cardContainer.innerHTML+=code;
+
+                //     //implement features on url undefined later
+                //     var title = document.querySelector("#title");
+                //     title.textContent = input.value;
+                //     var awards = document.querySelector("#awards");
+                //     awards.textContent= data.Awards;
+                //     var movieTitle = data.Title
+                //   console.log(movieTitle)
+                //     var plot = document.querySelector("#plot");
+                //     var actor = document.querySelector('#actor');
+                //     var rated = document.querySelector("#rated");
+                //     var poster = document.querySelector("#poster");
+                //     poster.setAttribute("src",data.Poster);
+                //     plot.textContent = data.Plot;
+                //     actor.textContent = data.Actors;
+                //     rated.textContent = data.Rated
+                //     getYoutubeVideo(movieTitle);
                     
                 }})
             }else{
