@@ -56,13 +56,13 @@ function getApi(userInput){
                     <img  id = "poster" src="${data.Poster}" class="card-img-top" alt="movie poster">
                     
                   </div>
-                  <div class="card-body">
+                  <div class="card-body w-25">
                       
                       <p  id = "plot" class="card-text fs-2">${data.Plot}</p>
                       <p1 id ="actor">Actors: ${data.Actors}</p1>
                       <p1 id = "rated">Rated: ${data.Rated}</p1>
                       <p1 id = "awards">Awards: ${data.Awards}</p1>
-                      <a href="${imdbAddress}" class="btn btn-primary p-3">Go to imdb website</a>
+                      <a href="${imdbAddress}" class="btn btn-primary fs-2 ">Go to imdb website</a>
                     </div>`;
                   cardContainer.innerHTML=code;
                   getNews(movieTitle);
