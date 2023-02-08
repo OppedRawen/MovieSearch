@@ -1,0 +1,23 @@
+body {
+    background: rgba(40, 39, 39, 0.959);
+}
+h1 {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    color:lightslategray;
+}
+h2 {
+    text-align: left;
+    color: lightslategrey;
+}
+h3 {
+    text-align: left;
+    color: lightslategray;
+}
+h4 {
+    text-align: center;
+    height: 50px;
+    color: lightgrey;
+}
