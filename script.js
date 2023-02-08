@@ -62,23 +62,7 @@ function getApi(userInput){
                   </div>`;
                   cardContainer.innerHTML+=code;
 
-                //     //implement features on url undefined later
-                //     var title = document.querySelector("#title");
-                //     title.textContent = input.value;
-                //     var awards = document.querySelector("#awards");
-                //     awards.textContent= data.Awards;
-                //     var movieTitle = data.Title
-                //   console.log(movieTitle)
-                //     var plot = document.querySelector("#plot");
-                //     var actor = document.querySelector('#actor');
-                //     var rated = document.querySelector("#rated");
-                //     var poster = document.querySelector("#poster");
-                //     poster.setAttribute("src",data.Poster);
-                //     plot.textContent = data.Plot;
-                //     actor.textContent = data.Actors;
-                //     rated.textContent = data.Rated
-                //     getYoutubeVideo(movieTitle);
-                    
+        
                 }})
             }else{
                 alert("Invalid response");
