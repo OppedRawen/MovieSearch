@@ -48,16 +48,18 @@ function getApi(userInput){
                 console.log(response);
                 response.json().then(function(data){{
                     console.log(data);
+                    var imdb = data.imdbID;
+                    var imdbAddress = "https://www.imdb.com/title/"+imdb+"/";
                     var code = `<div class="card" style="width: 18rem;">
-                    <h5 class="card-title" id = "title">${input.value}</h5>
+                    <h1 class="card-title" id = "title">${data.Title}</h5>
                     <img  id = "poster" src="${data.Poster}" class="card-img-top" alt="movie poster">
                     <div class="card-body">
                       
                       <p  id = "plot" class="card-text">${data.Plot}</p>
-                      <p1 id ="actor">${data.Actors}</p1>
-                      <p1 id = "rated">${data.Rated}</p1>
-                      <p1 id = "awards">${data.Awards}</p1>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <p1 id ="actor">Actors: ${data.Actors}</p1>
+                      <p1 id = "rated">Rated: ${data.Rated}</p1>
+                      <p1 id = "awards">Awards: ${data.Awards}</p1>
+                      <a href="${imdbAddress}" class="btn btn-primary p-3">Go to imdb website</a>
                     </div>
                   </div>`;
                   cardContainer.innerHTML+=code;
