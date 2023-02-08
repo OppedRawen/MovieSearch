@@ -49,6 +49,7 @@ function getApi(userInput){
                 response.json().then(function(data){{
                     console.log(data);
                     var imdb = data.imdbID;
+                    var movieTitle = data.Title
                     var imdbAddress = "https://www.imdb.com/title/"+imdb+"/";
                     var code = `<div class="card" style="width: 18rem;">
                     <h1 class="card-title" id = "title">${data.Title}</h5>
@@ -63,6 +64,7 @@ function getApi(userInput){
                     </div>
                   </div>`;
                   cardContainer.innerHTML+=code;
+                  getNews(movieTitle)
 
         
                 }})
@@ -76,21 +78,15 @@ function getApi(userInput){
 
 // //<<<<<<< feature/dropdownSelection
 
-// =======
-// //This searches for a youtube video based on the movie title given in the previous function
-// //added full original sountrack to search to look specifically for that movies soundtrack.
-// //function getYoutubeVideo(movieTitle) {
-//     //var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + movieTitle + "full original soundtrack&type=video&key=AIzaSyCJTHFOR8cX7fWfJ_0L1mLrsfgvneAZnsk";
-//    // console.log(requestUrl)
-//    // fetch(requestUrl)
-//      // .then(function (response) {
-//      //   return response.json();
-//      // })
-//     //  .then(function (data) {
-//     //    console.log(data.items[1].id.videoId)
-//    //     var videoID = data.items[1].id.videoId
-//   //      var youtubeVideo = "https://www.youtube.com/watch?v=" + videoID
-//   //      console.log(youtubeVideo)       
-//   //    })
-// //  }
-// //>>>>>>> main
+function getNews(movieTitle) {
+    var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
+    console.log(requestUrl)
+    fetch(requestUrl)
+      .then(function (response) {
+        console.log(response)
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)
+      })
+  }
