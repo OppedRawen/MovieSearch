@@ -9,10 +9,7 @@ form.addEventListener("submit",function(event){
    
     var userInput = input.value.trim();
     
-    if(userInput){
-            
-        
-        
+    if(userInput){ 
         getApi(userInput);
     }else{
         alert("Please enter something");
@@ -50,14 +47,15 @@ function getApi(userInput){
                     console.log(data);
                     var imdb = data.imdbID;
                     var movieTitle = data.Title;
+                    console.log(movieTitle);
                     var imdbAddress = "https://www.imdb.com/title/"+imdb+"/";
-                    var code = `<div class="card w-25" style="width: 25rem;">
-                    <h1 class="card-title" id = "title">${data.Title}</h5>
+                    var code = `<div class="card w-25" style="width: 25rem; background-color:rgb(138, 156, 172)">
+                    
                     <img  id = "poster" src="${data.Poster}" class="card-img-top" alt="movie poster">
                     
                   </div>
                   <div class="card-body w-25">
-                      
+                    <h1 class="card-title" id = "title">${data.Title}</h5>
                       <p  id = "plot" class="card-text fs-2">${data.Plot}</p>
                       <p1 id ="actor">Actors: ${data.Actors}</p1>
                       <p1 id = "rated">Rated: ${data.Rated}</p1>
