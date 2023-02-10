@@ -4,3 +4,54 @@ p1{
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+/* News Article CSS */
+
+.news-articles {
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+
+}
+
+.news-articles div {
+
+    background-color: gray;
+    padding: 20px;
+    margin: 20px;
+    flex-wrap: wrap;
+    width: 400px;
+    max-height: 800px;
+    border-radius: 10px;
+    box-shadow: black 5px 5px 5px;
+}
+
+.news-articles div:hover {
+
+    transition: .4s;
+    transform: scale(1.02);
+
+
+}
+
+.article-title {
+
+    font-size: 30px;
+    text-decoration: underline
+}
+
+.article-desc {
+
+    font-size: 20px;
+}
+
+.article-link {
+
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    bottom: 15px;
+}
