@@ -92,6 +92,7 @@ function getApi(userInput){
     console.log(movie);
 
  }
+ var articleDiv = document.querySelector(".news-articles");
 function getNews(movieTitle) {
     var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&docs=8&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
     console.log(requestUrl)
