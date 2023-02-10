@@ -93,8 +93,10 @@ function getApi(userInput){
     console.log(movie);
 
  }
+var articleDiv = document.querySelector('.news-articles');
+ 
 function getNews(movieTitle) {
-    var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
+    var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&docs=8&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
     console.log(requestUrl)
     fetch(requestUrl)
       .then(function (response) {
@@ -105,24 +107,41 @@ function getNews(movieTitle) {
         console.log(data)
         var articleData = data.response.docs
         console.log(articleData[0])
+
+        articleDiv.innerHTML = ""
+
         for (var i = 0; i < articleData.length; i++) {
 
-            var articleDiv = document.querySelector('.news-articles');
+            if (i === 8){
+                return;
+            } else {
+
             var divEl = document.createElement('div');
             var h2El = document.createElement('h2');
             var pEl = document.createElement('p');
-            var spanEl = document.createElement('span')
-
+            var h3El = document.createElement('h3')
+            var linkEl = document.createElement('a')
 
             articleDiv.append(divEl);
             divEl.append(h2El);
             divEl.append(pEl);
-            pEl.append(spanEl);
-            
+            divEl.append(h3El);
+
+
+            divEl.setAttribute('article', [i])
+            pEl.setAttribute('class', 'article-desc')
+            h3El.setAttribute('class', 'article-link')
+            h2El.setAttribute('class', 'article-title')
+
 
             h2El.textContent = articleData[i].headline.main
             pEl.textContent = articleData[i].abstract
-            spanEl.textContent = "Read more at " + articleData[i].web_url
+            h3El.textContent = "Read more at "
+            h3El.append(linkEl);
+            linkEl.setAttribute('href', articleData[i].web_url);
+            linkEl.textContent = "The New York Times";
+
+            }
         }
       })
   }
