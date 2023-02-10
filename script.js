@@ -69,6 +69,8 @@ function getApi(userInput){
                   cardContainer.innerHTML=code;
                   getNews(movieTitle);
                   localStorage.setItem("movieTitle",movieTitle);
+                  localStorage.setItem("movieType",select.value);
+                  localStorage.setItem("plotLength",select2.value);
                     render();
                 }})
             }else{
@@ -82,7 +84,11 @@ function getApi(userInput){
  
  function render(){
     var movie = localStorage.getItem("movieTitle");
+    var movieType = localStorage.getItem("movieType");
+    var plotLength = localStorage.getItem("plotLength");
     input.value =movie;
+    select.value = movieType;
+    select2.value = plotLength;
     console.log(movie);
 
  }
