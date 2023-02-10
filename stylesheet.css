@@ -1,6 +1,9 @@
 p1{
     display:block;
     font-size: 2rem;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+body{
+    background-color: rgb(138, 156, 172);
 }
