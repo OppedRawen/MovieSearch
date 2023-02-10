@@ -68,9 +68,11 @@ function getApi(userInput){
                     </div>`;
                   cardContainer.innerHTML=code;
                   input.value = movieTitle;
+
                   getNews(movieTitle);
                   localStorage.setItem("movieTitle",movieTitle);
                   localStorage.setItem("movieType",select.value);
+                  console.log(select.value);
                   localStorage.setItem("plotLength",select2.value);
                     render();
                 }})
@@ -87,6 +89,9 @@ function getApi(userInput){
     var movie = localStorage.getItem("movieTitle");
     var movieType = localStorage.getItem("movieType");
     var plotLength = localStorage.getItem("plotLength");
+    if(movie=="undefined"){
+        alert("This movie/series does not have the name that you input, try another one");
+      }
     input.value =movie;
     select.value = movieType;
     select2.value = plotLength;
