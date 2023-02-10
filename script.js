@@ -78,6 +78,9 @@ function getApi(userInput){
 
 // //<<<<<<< feature/dropdownSelection
 
+
+//Creates the articles for the movie that was searched//
+
 function getNews(movieTitle) {
     var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
     console.log(requestUrl)
@@ -88,5 +91,26 @@ function getNews(movieTitle) {
       })
       .then(function (data) {
         console.log(data)
+        var articleData = data.response.docs
+        console.log(articleData[0])
+        for (var i = 0; i < articleData.length; i++) {
+
+            var articleDiv = document.querySelector('.news-articles');
+            var divEl = document.createElement('div');
+            var h2El = document.createElement('h2');
+            var pEl = document.createElement('p');
+            var spanEl = document.createElement('span')
+
+
+            articleDiv.append(divEl);
+            divEl.append(h2El);
+            divEl.append(pEl);
+            pEl.append(spanEl);
+            
+
+            h2El.textContent = articleData[i].headline.main
+            pEl.textContent = articleData[i].abstract
+            spanEl.textContent = "Read more at " + articleData[i].web_url
+        }
       })
   }
