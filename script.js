@@ -61,10 +61,11 @@ function getApi(userInput){
                   <div class="card-body w-25">
                     <h1 class="card-title" id = "title">${data.Title}</h5>
                       <p  id = "plot" class="card-text fs-2">${data.Plot}</p>
+                      <p1 id ="director">Directed by: ${data.Director}</p1>
                       <p1 id ="actor">Actors: ${data.Actors}</p1>
                       <p1 id = "rated">Rated: ${data.Rated}</p1>
                       <p1 id = "awards">Awards: ${data.Awards}</p1>
-                      <a href="${imdbAddress}" class="btn btn-primary fs-2 ">Go to imdb website</a>
+                      <a href="${imdbAddress}" class="btn btn-secondary fs-2 ">Go to imdb website</a>
                     </div>`;
                   cardContainer.innerHTML=code;
                   input.value = movieTitle;
