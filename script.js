@@ -67,6 +67,7 @@ function getApi(userInput){
                       <a href="${imdbAddress}" class="btn btn-primary fs-2 ">Go to imdb website</a>
                     </div>`;
                   cardContainer.innerHTML=code;
+                  input.value = movieTitle;
                   getNews(movieTitle);
                   localStorage.setItem("movieTitle",movieTitle);
                   localStorage.setItem("movieType",select.value);
