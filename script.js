@@ -4,6 +4,10 @@ var form = document.querySelector("#search-form");
 var select = document.querySelector("#form-select");
 var select2 = document.querySelector("#form-select2");
 var cardContainer = document.querySelector("#cardContainer");
+
+// var movie = localStorage.getItem("movieTitle");
+// console.log(movie);
+render();
 form.addEventListener("submit",function(event){
     event.preventDefault();
    
@@ -47,7 +51,7 @@ function getApi(userInput){
                     console.log(data);
                     var imdb = data.imdbID;
                     var movieTitle = data.Title;
-                    console.log(movieTitle);
+                 
                     var imdbAddress = "https://www.imdb.com/title/"+imdb+"/";
                     var code = `<div class="card w-25" style="width: 25rem; background-color:rgb(138, 156, 172)">
                     
@@ -64,7 +68,8 @@ function getApi(userInput){
                     </div>`;
                   cardContainer.innerHTML=code;
                   getNews(movieTitle);
-        
+                  localStorage.setItem("movieTitle",movieTitle);
+                    render();
                 }})
             }else{
                 alert("Invalid response");
@@ -75,7 +80,12 @@ function getApi(userInput){
 }
  
  
- 
+ function render(){
+    var movie = localStorage.getItem("movieTitle");
+    input.value =movie;
+    console.log(movie);
+
+ }
 function getNews(movieTitle) {
     var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
     console.log(requestUrl)
