@@ -73,7 +73,7 @@ function getApi(userInput){
                   input.value = movieTitle;
 
                   getMovieReview(movieTitle);
-                  getYoutubeVideo(movieTitle);
+/*                   getYoutubeVideo(movieTitle); */
                   getNews(movieTitle);
 
                   localStorage.setItem("movieTitle",movieTitle);
@@ -168,41 +168,6 @@ function getNews(movieTitle) {
       });
   }
 
-//Fetchest Youtube video by using the proper name used in the OMDB api,  and added " movie trailer" to link to make sure a video of a movie trailer appears.//
-function getYoutubeVideo(movieTitle) {
-    var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + movieTitle + " movie trailer &type=video&key=AIzaSyCJTHFOR8cX7fWfJ_0L1mLrsfgvneAZnsk";
-    console.log(requestUrl)
-    fetch(requestUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data.items[1].id.videoId)
-        var videoID = data.items[1].id.videoId
-        var youtubeVideo = "https://www.youtube.com/embed/" + videoID;
-        console.log(youtubeVideo)   
-                
-        var iframeEl = document.createElement('iframe');
-        var movieTrailerEl = document.createElement('div')
-
-        movieTrailerEl.setAttribute("class", "movie-trailer")
-
-        //gives the iFrame element all the necessary attributes to create the youtube embedded video.//
-        Object.assign(iframeEl, {
-            title: "youtube video player",
-            frameboder: 0,
-            allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-            allowfullscreen: true,
-            width: 1000,
-            height: 600,
-            src: youtubeVideo
-        });
-
-        trailerContainer.innerHTML = "";
-        trailerContainer.appendChild(movieTrailerEl);
-        movieTrailerEl.appendChild(iframeEl);
-    })
-  }
  
   var reviewsDiv = document.querySelector('.reviews');
 
