@@ -24,6 +24,33 @@ p1{
     color: white;
 }
 
+/* Movie Reviews */
+
+#review-title {
+
+    color: white;
+    position: relative;
+    left: 20px;
+    top: 20px;
+    text-shadow: black 5px 5px 5px;
+}
+
+.reviews div {
+
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 50px;
+    flex-direction: column;
+    width: 95%;
+    max-height: 450px;
+    border-radius: 10px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    box-shadow: black 5px 5px 5px;
+
+
+}
+
 /* News Article CSS */
 
 .news-articles {

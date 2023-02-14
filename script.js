@@ -5,6 +5,7 @@ var select = document.querySelector("#form-select");
 var select2 = document.querySelector("#form-select2");
 var cardContainer = document.querySelector("#cardContainer");
 
+var reviewTitle = document.querySelector('#review-title')
 var articleContainer = document.querySelector('#article')
 var trailerContainer = document.querySelector("#trailer-container");
 
@@ -23,24 +24,24 @@ form.addEventListener("submit",function(event){
     }
 })
 function getApi(userInput){
-    var requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
+    var requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
     if(select.value==1){
         if(select2.value==1){
-            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
+            requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
         }else if(select2.value==2){
-            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=movie&plot=full&tomatoes=true&apikey=e1279f79&`;
+            requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=movie&plot=full&tomatoes=true&apikey=e1279f79&`;
         }
     }else if(select.value==2){
         if(select2.value==1){
-            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=series&plot=short&tomatoes=true&apikey=e1279f79&`;
+            requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=series&plot=short&tomatoes=true&apikey=e1279f79&`;
         }else if(select2.value==2){
-            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=series&plot=full&tomatoes=true&apikey=e1279f79&`;
+            requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=series&plot=full&tomatoes=true&apikey=e1279f79&`;
         }
     }else if(select.value==3){
         if(select2.value==1){
-            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=episodes&plot=short&tomatoes=true&apikey=e1279f79&`;
+            requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=episodes&plot=short&tomatoes=true&apikey=e1279f79&`;
         }else if(select2.value==2){
-            requestUrl = `http://www.omdbapi.com/?t='${userInput}'&type=episodes&plot=full&tomatoes=true&apikey=e1279f79&`;
+            requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=episodes&plot=full&tomatoes=true&apikey=e1279f79&`;
         }
     }
     
@@ -71,6 +72,7 @@ function getApi(userInput){
                   cardContainer.innerHTML=code;
                   input.value = movieTitle;
 
+                  getMovieReview(movieTitle);
                   getYoutubeVideo(movieTitle);
                   getNews(movieTitle);
 
@@ -201,3 +203,62 @@ function getYoutubeVideo(movieTitle) {
         movieTrailerEl.appendChild(iframeEl);
     })
   }
+ 
+  var reviewsDiv = document.querySelector('.reviews');
+
+  function getMovieReview(movieTitle) {
+    var requestUrl = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=" + movieTitle + "&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG";
+    console.log(requestUrl)
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+
+        console.log(data);
+
+        var movieReviewArray = data.results
+
+        reviewsDiv.innerHTML = ""
+
+        reviewTitle.textContent = "Movie Review(s)"
+
+        for (var i = 0; i < movieReviewArray.length; i++) {
+
+            var movieReviews = data.results[i].display_title
+
+            if (movieReviews === movieTitle) {
+
+                var reviewDetails = {
+                    title: movieReviewArray[i].headline,
+                    link: movieReviewArray[i].link.url,
+                    published: movieReviewArray[i].publication_date,
+                    summary: movieReviewArray[i].summary_short,
+                    by: movieReviewArray[i].byline
+                }
+
+                var divEl = document.createElement('div');
+                var h2El = document.createElement('h2');
+                var pEl = document.createElement('p');
+                var h3El = document.createElement('h3');
+    
+                reviewsDiv.append(divEl);
+                
+                divEl.appendChild(h2El);
+                divEl.appendChild(pEl);
+                divEl.appendChild(h3El);
+    
+                divEl.setAttribute('review', [i]);
+                pEl.setAttribute('class', 'article-desc');
+                h3El.setAttribute('class', 'article-link');
+                h2El.setAttribute('class', 'article-title');
+    
+                h2El.textContent = reviewDetails.title;
+                pEl.textContent = reviewDetails.summary;
+                h3El.textContent = reviewDetails.published;
+    
+                console.log(reviewDetails.summary)
+            }
+        }
+    })
+}
