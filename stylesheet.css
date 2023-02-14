@@ -7,28 +7,41 @@ p1{
 
 .custom-navbar {
 
+    width: 500px;
     font-size: 30px;
     float: right;
     margin: 0px 100px 0px 0px;
+    display: flex;
     flex-direction: row;
     text-decoration: none;
+    justify-content: space-evenly;
+
 }
 
 .custom-navbar a {
     text-decoration: none;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
     color: white;
 }
 
 /* News Article CSS */
 
-
 .news-articles {
 
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     padding: 50px;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#article {
+
+    color: white;
+    position: relative;
+    left: 20px;
+    top: 20px;
+    text-shadow: black 5px 5px 5px;
+
 }
 
 .news-articles h1 {
@@ -46,9 +59,11 @@ p1{
     padding: 20px;
     margin: 20px;
     flex-direction: column;
-    width: 400px;
-    max-height: fit-content;
+    width: 98%;
+    max-height: 450px;
     border-radius: 10px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
     box-shadow: black 5px 5px 5px;
 
 }
@@ -57,7 +72,8 @@ p1{
 .article-title {
 
     font-size: 30px;
-    text-decoration: underline
+    text-decoration: underline;
+    font-weight: 600;
 }
 
 .article-desc {
@@ -73,8 +89,23 @@ p1{
     bottom: 15px;
 }
 
+/* Movie Trailer */
+
+.movie-trailer {
+
+    background-color: rgb(12, 12, 12);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+/*  */
+
 body{
     background-color: rgb(138, 156, 172);
+    font-family: Arial, Helvetica, sans-serif
 }
 #display{
     display:block;
