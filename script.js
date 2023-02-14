@@ -12,6 +12,24 @@ var trailerContainer = document.querySelector("#trailer-container");
 // var movie = localStorage.getItem("movieTitle");
 // console.log(movie);
 render();
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 form.addEventListener("submit",function(event){
     event.preventDefault();
    
@@ -20,9 +38,14 @@ form.addEventListener("submit",function(event){
     if(userInput){ 
         getApi(userInput);
     }else{
-        alert("Please enter something");
+        modal_alert("Please enter Title!");
     }
 })
+function modal_alert(text){
+    var ptext = document.getElementById('ptext');
+    ptext.innerHTML = text;
+    modal.style.display="block";
+}
 function getApi(userInput){
     var requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
     if(select.value==1){
@@ -83,7 +106,7 @@ function getApi(userInput){
                     render();
                 }})
             }else{
-                alert("Invalid response");
+                modal_alert("Invalid response.");
             }
         })
 
@@ -96,7 +119,7 @@ function getApi(userInput){
     var movieType = localStorage.getItem("movieType");
     var plotLength = localStorage.getItem("plotLength");
     if(movie=="undefined"){
-        alert("This movie/series does not have the name that you input, try another one");
+        modal_alert("This movie/series does not have the name that you input, try another one");
         return
       }
     input.value =movie;
@@ -206,7 +229,6 @@ function getYoutubeVideo(movieTitle) {
  
   var reviewsDiv = document.querySelector('.reviews');
 
-  //gets movie reviews off the New York Times API based on media searched for
   function getMovieReview(movieTitle) {
     var requestUrl = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=" + movieTitle + "&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG";
     console.log(requestUrl)
@@ -222,19 +244,13 @@ function getYoutubeVideo(movieTitle) {
 
         reviewsDiv.innerHTML = ""
 
-        reviewTitle.textContent = ""
+        reviewTitle.textContent = "Movie Review(s)"
 
-        //This checks through the arrays given by the NYT API to make sure that the movie searched for matches the movie in the array, since the array also has related movies as
-        //part of the reviews
         for (var i = 0; i < movieReviewArray.length; i++) {
 
             var movieReviews = data.results[i].display_title
 
             if (movieReviews === movieTitle) {
-
-                //this is to make sure the movie reviews title only populates when a movie has reviews
-
-                reviewTitle.textContent = "Movie Review(s)"
 
                 var reviewDetails = {
                     title: movieReviewArray[i].headline,
@@ -259,7 +275,7 @@ function getYoutubeVideo(movieTitle) {
                 pEl.setAttribute('class', 'article-desc');
                 h3El.setAttribute('class', 'article-link');
                 h2El.setAttribute('class', 'article-title');
-                
+    
                 h2El.textContent = reviewDetails.title;
                 pEl.textContent = reviewDetails.summary;
                 h3El.textContent = reviewDetails.published;
