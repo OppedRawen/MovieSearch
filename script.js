@@ -5,6 +5,8 @@ var select = document.querySelector("#form-select");
 var select2 = document.querySelector("#form-select2");
 var cardContainer = document.querySelector("#cardContainer");
 
+var trailerContainer = document.querySelector("#trailer-container");
+
 // var movie = localStorage.getItem("movieTitle");
 // console.log(movie);
 render();
@@ -126,6 +128,14 @@ function getNews(movieTitle) {
                 return;
             } else {
 
+            var articleDetails = {
+                article: articleData[i].abstract,
+                headline: articleData[i].headline.main,
+                url: articleData[i].web_url,
+            }
+
+            console.log(articleDetails.headline)
+
             var divEl = document.createElement('div');
             var h2El = document.createElement('h2');
             var pEl = document.createElement('p');
@@ -133,19 +143,18 @@ function getNews(movieTitle) {
             var linkEl = document.createElement('a')
 
             articleDiv.append(divEl);
+            
             divEl.append(h2El);
             divEl.append(pEl);
             divEl.append(h3El);
-
 
             divEl.setAttribute('article', [i])
             pEl.setAttribute('class', 'article-desc')
             h3El.setAttribute('class', 'article-link')
             h2El.setAttribute('class', 'article-title')
 
-
-            h2El.textContent = articleData[i].headline.main
-            pEl.textContent = articleData[i].abstract
+            h2El.textContent = articleDetails.headline;
+            pEl.textContent = articleDetails.article;
             h3El.textContent = "Read more at "
             h3El.append(linkEl);
             linkEl.setAttribute('href', articleData[i].web_url);
@@ -153,7 +162,40 @@ function getNews(movieTitle) {
 
             }
         }
-      }) 
-}
+      })
+  }
 
-  
+function getYoutubeVideo(movieTitle) {
+    var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + movieTitle + " movie trailer &type=video&key=AIzaSyCJTHFOR8cX7fWfJ_0L1mLrsfgvneAZnsk";
+    console.log(requestUrl)
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data.items[1].id.videoId)
+        var videoID = data.items[1].id.videoId
+        var youtubeVideo = "https://www.youtube.com/embed/" + videoID;
+        console.log(youtubeVideo)   
+                
+        var iframeEl = document.createElement('iframe');
+        var movieTrailerEl = document.createElement('div')
+
+        movieTrailerEl.setAttribute("class", "movie-trailer")
+
+        Object.assign(iframeEl, {
+            title: "youtube video player",
+            frameboder: 0,
+            allow: "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+            allowfullscreen: true,
+            width: 1000,
+            height: 600,
+            src: youtubeVideo
+        });
+
+        trailerContainer.innerHTML = ""
+        trailerContainer.appendChild(movieTrailerEl)
+        movieTrailerEl.appendChild(iframeEl);
+    })
+  }
+ 

@@ -51,7 +51,11 @@
     margin: 20px;
     flex-direction: column;
     width: 400px;
+<<<<<<< HEAD
     max-height: fit-content;
+=======
+    max-height: 450px;
+>>>>>>> parent of c8ffe71 (added youtube video functionality, and a few cleanups here and there for the realted articles to display a little cleaner.)
     border-radius: 10px;
     box-shadow: black 5px 5px 5px;
 
@@ -79,5 +83,9 @@
 
 body{
     background-color: rgb(138, 156, 172);
+<<<<<<< HEAD
+=======
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+>>>>>>> parent of c8ffe71 (added youtube video functionality, and a few cleanups here and there for the realted articles to display a little cleaner.)
 }
 
