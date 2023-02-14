@@ -8,6 +8,8 @@ The user can even select the length of the plot description, to give either an i
 
 Below the information the user is given a related movie trailer based on their search, using the youtube v3 api to search up a youtube video that will then add that video link onto youtubes embedder found on the actual youtube page.
 
+Added a movie review section as well, that will populate with multiple movie reviews, if there aren;t any reviews, then the section will remain empty.
+
 The last section at the bottom is just extra information for the movie based on related articles from the newyork times. These articles jsut have short descriptions with a link leading towards the actual article. This was done using the New York Times API.
 
 ## APIs
@@ -20,7 +22,7 @@ The Youtube V3 API used to get the link to the trailer off youtube.
 
 https://developers.google.com/youtube/v3
 
-Lastly the New York Times API, used for the articles.
+Lastly the New York Times API, used for the articles, and the review(s).
 
 https://developer.nytimes.com/apis
 
@@ -41,6 +43,8 @@ WHEN I search a movie
 THEN the movie with a poster and details appear
 WHEN I scroll down
 THEN I am presented with the trailer for the movie
+WHEN I continue to scroll
+THEN I am presented with a a review if what I searched for has any
 WHEN I continue to scroll
 THEN I see a total of 8 related articles for the movie
 WHEN I click the read more link

@@ -206,6 +206,7 @@ function getYoutubeVideo(movieTitle) {
  
   var reviewsDiv = document.querySelector('.reviews');
 
+  //gets movie reviews off the New York Times API based on media searched for
   function getMovieReview(movieTitle) {
     var requestUrl = "https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=" + movieTitle + "&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG";
     console.log(requestUrl)
@@ -221,13 +222,19 @@ function getYoutubeVideo(movieTitle) {
 
         reviewsDiv.innerHTML = ""
 
-        reviewTitle.textContent = "Movie Review(s)"
+        reviewTitle.textContent = ""
 
+        //This checks through the arrays given by the NYT API to make sure that the movie searched for matches the movie in the array, since the array also has related movies as
+        //part of the reviews
         for (var i = 0; i < movieReviewArray.length; i++) {
 
             var movieReviews = data.results[i].display_title
 
             if (movieReviews === movieTitle) {
+
+                //this is to make sure the movie reviews title only populates when a movie has reviews
+
+                reviewTitle.textContent = "Movie Review(s)"
 
                 var reviewDetails = {
                     title: movieReviewArray[i].headline,
@@ -252,7 +259,7 @@ function getYoutubeVideo(movieTitle) {
                 pEl.setAttribute('class', 'article-desc');
                 h3El.setAttribute('class', 'article-link');
                 h2El.setAttribute('class', 'article-title');
-    
+                
                 h2El.textContent = reviewDetails.title;
                 pEl.textContent = reviewDetails.summary;
                 h3El.textContent = reviewDetails.published;
