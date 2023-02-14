@@ -5,6 +5,7 @@ var select = document.querySelector("#form-select");
 var select2 = document.querySelector("#form-select2");
 var cardContainer = document.querySelector("#cardContainer");
 
+var articleContainer = document.querySelector('#article')
 var trailerContainer = document.querySelector("#trailer-container");
 
 // var movie = localStorage.getItem("movieTitle");
@@ -121,12 +122,11 @@ function getNews(movieTitle) {
     
         articleDiv.innerHTML = ""
 
-        var h1El = document.createElement('h1')
-        articleDiv.append(h1El);
-        h1El.setAttribute('id', "article" )
+        articleContainer.textContent = "Related Articles"
 
         for (var i = 0; i < articleData.length; i++) {
 
+            //prevents more than 8 articles from populating. Didn't see a &count= attribute to add to the link from the api documentation.//
             if (i === 8){
                 return;
             } else {
@@ -137,37 +137,36 @@ function getNews(movieTitle) {
                 url: articleData[i].web_url,
             }
 
-            console.log(articleDetails.headline)
-
             var divEl = document.createElement('div');
             var h2El = document.createElement('h2');
             var pEl = document.createElement('p');
-            var h3El = document.createElement('h3')
-            var linkEl = document.createElement('a')
+            var h3El = document.createElement('h3');
+            var linkEl = document.createElement('a');
 
             articleDiv.append(divEl);
             
-            divEl.append(h2El);
-            divEl.append(pEl);
-            divEl.append(h3El);
+            divEl.appendChild(h2El);
+            divEl.appendChild(pEl);
+            divEl.appendChild(h3El);
 
-            divEl.setAttribute('article', [i])
-            pEl.setAttribute('class', 'article-desc')
-            h3El.setAttribute('class', 'article-link')
-            h2El.setAttribute('class', 'article-title')
+            divEl.setAttribute('article', [i]);
+            pEl.setAttribute('class', 'article-desc');
+            h3El.setAttribute('class', 'article-link');
+            h2El.setAttribute('class', 'article-title');
 
             h2El.textContent = articleDetails.headline;
             pEl.textContent = articleDetails.article;
-            h3El.textContent = "Read more at "
+            h3El.textContent = "Read more at ";
             h3El.append(linkEl);
             linkEl.setAttribute('href', articleDetails.url);
             linkEl.textContent = "The New York Times";
 
             }
         }
-      })
+      });
   }
 
+//Fetchest Youtube video by using the proper name used in the OMDB api,  and added " movie trailer" to link to make sure a video of a movie trailer appears.//
 function getYoutubeVideo(movieTitle) {
     var requestUrl = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=" + movieTitle + " movie trailer &type=video&key=AIzaSyCJTHFOR8cX7fWfJ_0L1mLrsfgvneAZnsk";
     console.log(requestUrl)
@@ -186,6 +185,7 @@ function getYoutubeVideo(movieTitle) {
 
         movieTrailerEl.setAttribute("class", "movie-trailer")
 
+        //gives the iFrame element all the necessary attributes to create the youtube embedded video.//
         Object.assign(iframeEl, {
             title: "youtube video player",
             frameboder: 0,
@@ -196,8 +196,8 @@ function getYoutubeVideo(movieTitle) {
             src: youtubeVideo
         });
 
-        trailerContainer.innerHTML = ""
-        trailerContainer.appendChild(movieTrailerEl)
+        trailerContainer.innerHTML = "";
+        trailerContainer.appendChild(movieTrailerEl);
         movieTrailerEl.appendChild(iframeEl);
     })
   }
