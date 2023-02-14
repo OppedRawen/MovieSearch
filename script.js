@@ -61,15 +61,19 @@ function getApi(userInput){
                   <div class="card-body w-25">
                     <h1 class="card-title" id = "title">${data.Title}</h5>
                       <p  id = "plot" class="card-text fs-2">${data.Plot}</p>
+                      <p1 id ="director">Directed by: ${data.Director}</p1>
                       <p1 id ="actor">Actors: ${data.Actors}</p1>
                       <p1 id = "rated">Rated: ${data.Rated}</p1>
                       <p1 id = "awards">Awards: ${data.Awards}</p1>
-                      <a href="${imdbAddress}" class="btn btn-primary fs-2 ">Go to imdb website</a>
+                      <a href="${imdbAddress}" class="btn btn-secondary fs-2 ">Go to imdb website</a>
                     </div>`;
                   cardContainer.innerHTML=code;
+                  input.value = movieTitle;
+
                   getNews(movieTitle);
                   localStorage.setItem("movieTitle",movieTitle);
                   localStorage.setItem("movieType",select.value);
+                  console.log(select.value);
                   localStorage.setItem("plotLength",select2.value);
                     render();
                 }})
@@ -86,13 +90,17 @@ function getApi(userInput){
     var movie = localStorage.getItem("movieTitle");
     var movieType = localStorage.getItem("movieType");
     var plotLength = localStorage.getItem("plotLength");
+    if(movie=="undefined"){
+        alert("This movie/series does not have the name that you input, try another one");
+      }
     input.value =movie;
     select.value = movieType;
     select2.value = plotLength;
     console.log(movie);
 
  }
- var articleDiv = document.querySelector(".news-articles");
+var articleDiv = document.querySelector('.news-articles');
+ 
 function getNews(movieTitle) {
     var requestUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + movieTitle + ' movie&docs=8&api-key=3gONaMIA57zdh5wDKeK1Fu1MVI3RgteG';
     console.log(requestUrl)
@@ -107,6 +115,10 @@ function getNews(movieTitle) {
         console.log(articleData[0])
 
         articleDiv.innerHTML = ""
+
+        var h1El = document.createElement('h1')
+        articleDiv.append(h1El);
+        h1El.setAttribute('id', "article" )
 
         for (var i = 0; i < articleData.length; i++) {
 
