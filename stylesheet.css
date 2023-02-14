@@ -5,7 +5,23 @@ p1{
     margin-bottom: 5px;
 }
 
+.custom-navbar {
+
+    font-size: 30px;
+    float: right;
+    margin: 0px 100px 0px 0px;
+    flex-direction: row;
+    text-decoration: none;
+}
+
+.custom-navbar a {
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
 /* News Article CSS */
+
 
 .news-articles {
 
@@ -13,29 +29,30 @@ p1{
     padding: 50px;
     display: flex;
     flex-wrap: wrap;
+}
 
+.news-articles h1 {
+
+    color: white;
+    font-size: 50px;
+    text-shadow: black 5px 5px 5px;
+    text-decoration: underline;
 
 }
 
 .news-articles div {
 
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
     padding: 20px;
     margin: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 400px;
-    max-height: 800px;
+    max-height: fit-content;
     border-radius: 10px;
     box-shadow: black 5px 5px 5px;
-}
-
-.news-articles div:hover {
-
-    transition: .4s;
-    transform: scale(1.02);
-
 
 }
+
 
 .article-title {
 

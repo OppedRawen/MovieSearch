@@ -116,6 +116,10 @@ function getNews(movieTitle) {
 
         articleDiv.innerHTML = ""
 
+        var h1El = document.createElement('h1')
+        articleDiv.append(h1El);
+        h1El.setAttribute('id', "article" )
+
         for (var i = 0; i < articleData.length; i++) {
 
             if (i === 8){
