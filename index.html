@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
             <div class="container-fluid">
               
-              <a class="navbar-brand w-8 p-3 text-light fs-1" href="#">Movie Searcher</a>
+              <a class="navbar-brand w-8 p-3 text-light fs-1" href="#">!IMDB</a>
               <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button> -->
@@ -41,18 +41,16 @@
               </div>
             </div>
             <nav class="custom-navbar">
+              <a href="#trailer-container">Movie Trailer</a>
               <a href="#article">Articles</a>
             </nav>
           </nav>
 
 
     </header>
-    <section class = "container">
-       
-          
-    </section>
     
-    <section id = "cardContainer" class="d-flex flex-row bd-highlight mb-3">
+    
+    <section id = "cardContainer" class="container-fluid d-flex flex-row bd-highlight mb-3">
         <!-- <div class="card" style="width: 18rem;">
             <h5 class="card-title" id = "title">Movie title</h5>
             <img  id = "poster" src="" class="card-img-top" alt="movie poster">
@@ -66,17 +64,23 @@
             </div>
           </div> -->
 
+          <section class="intro"> 
+            <img src="/images/06HNs2y.jpg" id = "display"  alt = "display poster"/>
+            <h1>Movie Article Searcher</h1>
+            <p1>Look up a film/show to get synopsis and articles related to it</p1>
+          </section>
+           
     </section>
 
-<<<<<<< HEAD
-=======
     <section id="trailer-container">
       <!-- Movie Trailer populates here -->
     </section>
     
->>>>>>> parent of c8ffe71 (added youtube video functionality, and a few cleanups here and there for the realted articles to display a little cleaner.)
-    <section class="news-articles">
+    <section>
+      <h1 id="article"></h1>
+      <div class="news-articles">
       <!-- news articles populate here -->
+      </div>
     </section>
     
 
@@ -84,6 +88,5 @@
 
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
-
 </body>
 </html>
