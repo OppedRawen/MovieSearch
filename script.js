@@ -12,6 +12,24 @@ var trailerContainer = document.querySelector("#trailer-container");
 // var movie = localStorage.getItem("movieTitle");
 // console.log(movie);
 render();
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 form.addEventListener("submit",function(event){
     event.preventDefault();
    
@@ -20,9 +38,14 @@ form.addEventListener("submit",function(event){
     if(userInput){ 
         getApi(userInput);
     }else{
-        alert("Please enter something");
+        modal_alert("Please enter Title!");
     }
 })
+function modal_alert(text){
+    var ptext = document.getElementById('ptext');
+    ptext.innerHTML = text;
+    modal.style.display="block";
+}
 function getApi(userInput){
     var requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
     if(select.value==1){
@@ -85,7 +108,7 @@ function getApi(userInput){
                     render();
                 }})
             }else{
-                alert("Invalid response");
+                modal_alert("Invalid response.");
             }
         })
 
@@ -98,7 +121,7 @@ function getApi(userInput){
     var movieType = localStorage.getItem("movieType");
     var plotLength = localStorage.getItem("plotLength");
     if(movie=="undefined"){
-        alert("This movie/series does not have the name that you input, try another one");
+        modal_alert("This movie/series does not have the name that you input, try another one");
         return
       }
     input.value =movie;
