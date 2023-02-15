@@ -1,5 +1,11 @@
 # 07 Project 1: Interactive Front-End Application
 
+## Deployed Site
+
+https://oppedrawen.github.io/Project1/
+
+## About the APP
+
 For project one, our group wanted to create a movie related database that would give the user the ability to read about a movie with a basic description of the director, the actors, the rating, awards, and more. Done with the OMBD API
 
 The site begins with an empty page that lets the user know to search up whatever movie they would like, based on the type of media it is, movie, tv series, and episode as well.
