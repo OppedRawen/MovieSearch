@@ -95,6 +95,8 @@ function getApi(userInput){
                   cardContainer.innerHTML=code;
                   input.value = movieTitle;
 
+                  reviewTitle.textContent = ""
+
                   getMovieReview(movieTitle);
                   getYoutubeVideo(movieTitle);
                   getNews(movieTitle);
@@ -244,13 +246,13 @@ function getYoutubeVideo(movieTitle) {
 
         reviewsDiv.innerHTML = ""
 
-        reviewTitle.textContent = "Movie Review(s)"
-
         for (var i = 0; i < movieReviewArray.length; i++) {
 
             var movieReviews = data.results[i].display_title
 
             if (movieReviews === movieTitle) {
+
+                reviewTitle.textContent = "Movie Review(s)"
 
                 var reviewDetails = {
                     title: movieReviewArray[i].headline,
