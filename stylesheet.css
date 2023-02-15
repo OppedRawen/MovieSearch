@@ -7,8 +7,7 @@ p1{
 
 .custom-navbar {
 
-
-    width: 800px;
+    width: auto;
     font-size: 30px;
     float: right;
     margin: 0px 100px 0px 0px;
@@ -66,7 +65,7 @@ p1{
 
     color: white;
     position: relative;
-    left: 20px;
+    left: 30px;
     top: 20px;
     text-shadow: black 5px 5px 5px;
 
@@ -174,15 +173,15 @@ body{
   /* Modal Content/Box */
   .modal-content {
     display: block;
-    background-color: #fefefe;
+    background-color: #959494;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid rgb(72, 70, 70);
     width: 80%; /* Could be more or less, depending on screen size */
   }
   /* The Close Button */
 .close {
-    color: #aaa;
+    color: rgb(90, 85, 85);
     float: right;
     font-size: 28px;
     font-weight: bold;
