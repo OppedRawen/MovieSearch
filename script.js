@@ -11,12 +11,12 @@ var trailerContainer = document.querySelector("#trailer-container");
 
 // var movie = localStorage.getItem("movieTitle");
 // console.log(movie);
-render();
 // Get the modal
 var modal = document.getElementById("myModal");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
+render();
 
 
 // When the user clicks on <span> (x), close the modal
@@ -94,8 +94,6 @@ function getApi(userInput){
                     </div>`;
                   cardContainer.innerHTML=code;
                   input.value = movieTitle;
-
-                  reviewTitle.textContent = ""
 
                   getMovieReview(movieTitle);
                   getYoutubeVideo(movieTitle);
@@ -246,13 +244,13 @@ function getYoutubeVideo(movieTitle) {
 
         reviewsDiv.innerHTML = ""
 
+        reviewTitle.textContent = "Movie Review(s)"
+
         for (var i = 0; i < movieReviewArray.length; i++) {
 
             var movieReviews = data.results[i].display_title
 
             if (movieReviews === movieTitle) {
-
-                reviewTitle.textContent = "Movie Review(s)"
 
                 var reviewDetails = {
                     title: movieReviewArray[i].headline,
