@@ -8,15 +8,15 @@ var cardContainer = document.querySelector("#cardContainer");
 var reviewTitle = document.querySelector('#review-title')
 var articleContainer = document.querySelector('#article')
 var trailerContainer = document.querySelector("#trailer-container");
+var modal = document.querySelector("#myModal");
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 // var movie = localStorage.getItem("movieTitle");
 // console.log(movie);
 render();
 // Get the modal
-var modal = document.getElementById("myModal");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
 
 
 // When the user clicks on <span> (x), close the modal
@@ -44,7 +44,7 @@ form.addEventListener("submit",function(event){
 function modal_alert(text){
     var ptext = document.getElementById('ptext');
     ptext.innerHTML = text;
-    modal.style.display="block";
+    // modal.style.display="block";
 }
 function getApi(userInput){
     var requestUrl = `https://www.omdbapi.com/?t='${userInput}'&type=movie&plot=short&tomatoes=true&apikey=e1279f79&`;
